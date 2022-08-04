@@ -13,8 +13,33 @@
         <h2>Estado da Lampada</h2>
     </header> 
     <main> 
-        <button id="acender">Acender Lampada</button>  
-        <button id="desligar">Desligar Lampada</button>
+        <button id="acender" onclick="ligarLapada()">Acender Lampada</button>  
+        <button id="desligar" onclick="desligarLapada()">Desligar Lampada</button>
     </main>
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"> </script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"> </script>
+
+<script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyDvp8t_nWoNi2YHx3caLwbYCfJlRI6eK68",
+    authDomain: "proctolampada.firebaseapp.com",
+    databaseURL: "https://proctolampada-default-rtdb.firebaseio.com",
+    projectId: "proctolampada",
+    storageBucket: "proctolampada.appspot.com",
+    messagingSenderId: "200691959498",
+    appId: "1:200691959498:web:12dc94a03df99f3a149633",
+    measurementId: "G-9K0QPP6VSG"
+}
+    firebase.initializeApp(firebaseConfig)
+
+    function ligarLapada(){
+        firebase.database().ref('Sala').set({estado: 'Ligada'})
+    }
+    function desligarLapada(){
+        firebase.database().ref('Sala').set({estado: 'Desligada'})
+    }
+
+</script>
+
 </html>
